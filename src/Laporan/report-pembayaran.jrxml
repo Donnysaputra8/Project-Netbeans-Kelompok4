@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="609805bd-318d-4513-a303-5f99195c65b5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     pembayaran_event.`id_pembayaran` AS pembayaran_event_id_pembayaran,
+     pembayaran_event.`id_pemesanan` AS pembayaran_event_id_pemesanan,
+     pembayaran_event.`tanggal_bayar` AS pembayaran_event_tanggal_bayar,
+     pembayaran_event.`jenis_pembayaran` AS pembayaran_event_jenis_pembayaran,
+     pembayaran_event.`jumlah_bayar` AS pembayaran_event_jumlah_bayar,
+     pembayaran_event.`metode_pembayaran` AS pembayaran_event_metode_pembayaran,
+     pembayaran_event.`bukti_pembayaran` AS pembayaran_event_bukti_pembayaran,
+     pembayaran_event.`catatan` AS pembayaran_event_catatan,
+     pemesanan_event.`id_pelanggan` AS pemesanan_event_id_pelanggan,
+     pemesanan_event.`id_paket` AS pemesanan_event_id_paket,
+     pemesanan_event.`id_venue` AS pemesanan_event_id_venue,
+     pemesanan_event.`tanggal_acara` AS pemesanan_event_tanggal_acara,
+     pemesanan_event.`jumlah_tamu` AS pemesanan_event_jumlah_tamu,
+     pemesanan_event.`request_tambahan` AS pemesanan_event_request_tambahan,
+     pemesanan_event.`status_pemesanan` AS pemesanan_event_status_pemesanan,
+     pelanggan.`id_pel` AS pelanggan_id_pel,
+     pelanggan.`nm_pel` AS pelanggan_nm_pel,
+     pelanggan.`alamat` AS pelanggan_alamat,
+     pelanggan.`no_tel` AS pelanggan_no_tel,
+     pelanggan.`email` AS pelanggan_email,
+     pelanggan.`perusahaan` AS pelanggan_perusahaan,
+     pemesanan_event.`id_pemesanan` AS pemesanan_event_id_pemesanan
+FROM
+     `pemesanan_event` pemesanan_event INNER JOIN `pembayaran_event` pembayaran_event ON pemesanan_event.`id_pemesanan` = pembayaran_event.`id_pemesanan`
+     INNER JOIN `pelanggan` pelanggan ON pemesanan_event.`id_pelanggan` = pelanggan.`id_pel`]]>
+	</queryString>
+	<field name="pembayaran_event_id_pembayaran" class="java.lang.String"/>
+	<field name="pembayaran_event_id_pemesanan" class="java.lang.String"/>
+	<field name="pembayaran_event_tanggal_bayar" class="java.sql.Date"/>
+	<field name="pembayaran_event_jenis_pembayaran" class="java.lang.String"/>
+	<field name="pembayaran_event_jumlah_bayar" class="java.math.BigDecimal"/>
+	<field name="pembayaran_event_metode_pembayaran" class="java.lang.String"/>
+	<field name="pembayaran_event_bukti_pembayaran" class="java.lang.String"/>
+	<field name="pembayaran_event_catatan" class="java.lang.String"/>
+	<field name="pemesanan_event_id_pelanggan" class="java.lang.String"/>
+	<field name="pemesanan_event_id_paket" class="java.lang.String"/>
+	<field name="pemesanan_event_id_venue" class="java.lang.String"/>
+	<field name="pemesanan_event_tanggal_acara" class="java.sql.Date"/>
+	<field name="pemesanan_event_jumlah_tamu" class="java.lang.Integer"/>
+	<field name="pemesanan_event_request_tambahan" class="java.lang.String"/>
+	<field name="pemesanan_event_status_pemesanan" class="java.lang.String"/>
+	<field name="pelanggan_id_pel" class="java.lang.String"/>
+	<field name="pelanggan_nm_pel" class="java.lang.String"/>
+	<field name="pelanggan_alamat" class="java.lang.String"/>
+	<field name="pelanggan_no_tel" class="java.lang.String"/>
+	<field name="pelanggan_email" class="java.lang.String"/>
+	<field name="pelanggan_perusahaan" class="java.lang.String"/>
+	<field name="pemesanan_event_id_pemesanan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="181" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="133" width="555" height="33" uuid="6ff34d2d-4237-4523-93e4-d72a8c621b51"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Pembayaran]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="180" width="554" height="1" uuid="dc21de5b-d481-4b35-9226-0cbdf882a1b0"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="85" width="50" height="19" uuid="8cc7b828-ec11-46cf-a1a7-6454e2273985"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal   :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="72" width="555" height="1" uuid="a38a683f-42bf-4dc8-ae27-f9d8769877ba"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="71" y="85" width="144" height="19" uuid="3a5f3c1e-b372-464a-8d91-c9afb51189a8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="27" y="0" width="60" height="60" uuid="a86ae3e6-c8f5-48bb-88b3-1e647962ea62"/>
+				<imageExpression><![CDATA["C:\\Users\\Donny Saputra\\OneDrive\\Dokumen\\NetBeansProjects\\Project_event_organizer(3)\\src\\img\\Abbasy.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="146" y="10" width="265" height="20" uuid="b0fe431f-f4d5-406e-a25b-7f43d6a7ebba"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abbasy Decoration - Event Organizer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="33" width="212" height="17" uuid="a57e94bc-380c-4f0c-9d28-3690434cdfbb"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Mahakam Raya No.70, Jakarta Pusat]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="34" width="554" height="1" uuid="cb95264b-538f-4e07-9719-5a603100c5cf"/>
+			</line>
+			<line>
+				<reportElement x="553" y="0" width="1" height="35" uuid="74d49eda-ba8d-48b9-8d5c-e620f4ace3c0"/>
+			</line>
+			<line>
+				<reportElement x="365" y="0" width="1" height="35" uuid="75088b98-e096-4757-b451-468e20a47257"/>
+			</line>
+			<line>
+				<reportElement x="113" y="0" width="1" height="35" uuid="7a47b45c-e9c7-4bd9-8976-f08cc7ed786d"/>
+			</line>
+			<staticText>
+				<reportElement x="196" y="2" width="90" height="31" uuid="5808d930-b21e-467c-921d-6e9c98a5bf61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Bayar]]></text>
+			</staticText>
+			<line>
+				<reportElement x="290" y="0" width="1" height="35" uuid="5c247cf8-1daa-4251-8f1f-d07bdf080fd6"/>
+			</line>
+			<staticText>
+				<reportElement x="453" y="2" width="95" height="31" uuid="273601d1-2a5c-4838-9e56-3880824f93a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah Pembayaran]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="1" height="35" uuid="2e347c44-a545-483e-bd80-e6a87b3dbb24"/>
+			</line>
+			<line>
+				<reportElement x="38" y="0" width="1" height="35" uuid="c542a43f-4b95-4895-a6dc-be8ec7fd5092"/>
+			</line>
+			<staticText>
+				<reportElement x="296" y="0" width="64" height="32" uuid="e3e8b101-6e05-4753-8c6a-fa4c3abdcd92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jenis Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="2" width="67" height="31" uuid="ea54e2d4-7f6e-4373-a2cd-85d923580917"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Metode Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="8" width="30" height="20" uuid="0dc02843-662c-4415-8a51-e2a2c7bcb474"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="1" width="63" height="32" uuid="8ac2a83f-09ea-40df-9e57-b55b99001223"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="2" width="70" height="31" uuid="60e67bbe-d673-467d-b3c9-810df89b83e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Pelanggan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="447" y="0" width="1" height="35" uuid="31b50832-fc04-4e13-82fb-91a11a7b9be5"/>
+			</line>
+			<line>
+				<reportElement x="192" y="0" width="1" height="35" uuid="44412b4e-f4c3-40c1-a5bc-6c4b0725c239"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="45" width="554" height="1" uuid="d786cfca-c3d0-4702-85ae-4a8ac83c9f9e"/>
+			</line>
+			<line>
+				<reportElement x="553" y="0" width="1" height="45" uuid="fd40f75b-3526-4908-86b2-f82eb2ac9f8a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="45" uuid="8b891d3c-1e58-4cea-961d-9271ba3ceb17"/>
+			</line>
+			<textField>
+				<reportElement x="4" y="4" width="30" height="37" uuid="145180ae-a972-45c2-9f5e-69cafffe173c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="38" y="0" width="1" height="45" uuid="0b568f68-5d4a-4d00-8659-a198a6c673a6"/>
+			</line>
+			<line>
+				<reportElement x="113" y="0" width="1" height="45" uuid="0855cf7d-5848-421f-92e6-239f01219526"/>
+			</line>
+			<line>
+				<reportElement x="365" y="0" width="1" height="45" uuid="9bcf73a1-506a-4309-914c-5c700936818f"/>
+			</line>
+			<line>
+				<reportElement x="192" y="0" width="1" height="45" uuid="fa666dd2-49b4-4e52-b203-7b86df06e6d8"/>
+			</line>
+			<line>
+				<reportElement x="290" y="0" width="1" height="45" uuid="e4ba9256-16eb-4a67-8f19-2b81f4bf396b"/>
+			</line>
+			<line>
+				<reportElement x="447" y="0" width="1" height="45" uuid="420c5690-2735-4e4e-973c-3c54928fae5a"/>
+			</line>
+			<textField>
+				<reportElement x="44" y="4" width="63" height="37" uuid="c4087f25-7b3f-41cc-b97c-07cd8d47d59d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pembayaran_event_id_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="4" width="70" height="37" uuid="8b20efd4-df65-4191-9033-e0a75461d902"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pelanggan_nm_pel}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="196" y="4" width="90" height="37" uuid="9d8ba295-6643-44f3-9bf7-3d1b2ccfa100"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pembayaran_event_tanggal_bayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="4" width="64" height="37" uuid="cecb1ac9-0f02-41e4-a1c6-936c767a998f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pembayaran_event_jenis_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="4" width="67" height="37" uuid="d67304b3-8196-4e9e-acb3-b40c817f7479"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pembayaran_event_metode_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="4" width="93" height="37" uuid="64d2c4cb-4339-4939-9a84-aacc3dc131c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pembayaran_event_jumlah_bayar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="186" splitType="Stretch">
+			<staticText>
+				<reportElement x="390" y="86" width="110" height="20" uuid="310fa6de-0941-48c4-b441-aaedb412b7b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Manager Perusahaan,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="411" y="61" width="106" height="20" uuid="fda1f1b7-2adf-4928-a8f0-e3d25bcc4cbc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="373" y="61" width="37" height="20" uuid="31bcf2b9-f3a3-4f26-91f3-311e940215c5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="151" width="110" height="20" uuid="bd2ae18a-fcaf-45a6-ad06-7e13e685716e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[(..................................)]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="5" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>

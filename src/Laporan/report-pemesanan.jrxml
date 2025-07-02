@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="54016e1e-8cf2-432a-b90e-7caa372b07bf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     pelanggan.`id_pel` AS pelanggan_id_pel,
+     pelanggan.`nm_pel` AS pelanggan_nm_pel,
+     pelanggan.`alamat` AS pelanggan_alamat,
+     pelanggan.`no_tel` AS pelanggan_no_tel,
+     pelanggan.`email` AS pelanggan_email,
+     pelanggan.`perusahaan` AS pelanggan_perusahaan,
+     pemesanan_event.`id_pemesanan` AS pemesanan_event_id_pemesanan,
+     pemesanan_event.`id_pelanggan` AS pemesanan_event_id_pelanggan,
+     pemesanan_event.`id_paket` AS pemesanan_event_id_paket,
+     pemesanan_event.`id_venue` AS pemesanan_event_id_venue,
+     pemesanan_event.`tanggal_acara` AS pemesanan_event_tanggal_acara,
+     pemesanan_event.`jumlah_tamu` AS pemesanan_event_jumlah_tamu,
+     pemesanan_event.`request_tambahan` AS pemesanan_event_request_tambahan,
+     pemesanan_event.`status_pemesanan` AS pemesanan_event_status_pemesanan,
+     paket_event.`id_paket` AS paket_event_id_paket,
+     paket_event.`nama_paket` AS paket_event_nama_paket,
+     paket_event.`deskripsi` AS paket_event_deskripsi,
+     paket_event.`harga` AS paket_event_harga,
+     venue.`id_venue` AS venue_id_venue,
+     venue.`nama_venue` AS venue_nama_venue,
+     venue.`alamat_venue` AS venue_alamat_venue,
+     venue.`kapasitas` AS venue_kapasitas,
+     venue.`harga_sewa` AS venue_harga_sewa
+FROM
+     `pemesanan_event` pemesanan_event INNER JOIN `pelanggan` pelanggan ON pemesanan_event.`id_pelanggan` = pelanggan.`id_pel`
+     INNER JOIN `paket_event` paket_event ON pemesanan_event.`id_paket` = paket_event.`id_paket`
+     INNER JOIN `venue` venue ON pemesanan_event.`id_venue` = venue.`id_venue`]]>
+	</queryString>
+	<field name="pelanggan_id_pel" class="java.lang.String"/>
+	<field name="pelanggan_nm_pel" class="java.lang.String"/>
+	<field name="pelanggan_alamat" class="java.lang.String"/>
+	<field name="pelanggan_no_tel" class="java.lang.String"/>
+	<field name="pelanggan_email" class="java.lang.String"/>
+	<field name="pelanggan_perusahaan" class="java.lang.String"/>
+	<field name="pemesanan_event_id_pemesanan" class="java.lang.String"/>
+	<field name="pemesanan_event_id_pelanggan" class="java.lang.String"/>
+	<field name="pemesanan_event_id_paket" class="java.lang.String"/>
+	<field name="pemesanan_event_id_venue" class="java.lang.String"/>
+	<field name="pemesanan_event_tanggal_acara" class="java.sql.Date"/>
+	<field name="pemesanan_event_jumlah_tamu" class="java.lang.Integer"/>
+	<field name="pemesanan_event_request_tambahan" class="java.lang.String"/>
+	<field name="pemesanan_event_status_pemesanan" class="java.lang.String"/>
+	<field name="paket_event_id_paket" class="java.lang.String"/>
+	<field name="paket_event_nama_paket" class="java.lang.String"/>
+	<field name="paket_event_deskripsi" class="java.lang.String"/>
+	<field name="paket_event_harga" class="java.math.BigDecimal"/>
+	<field name="venue_id_venue" class="java.lang.String"/>
+	<field name="venue_nama_venue" class="java.lang.String"/>
+	<field name="venue_alamat_venue" class="java.lang.String"/>
+	<field name="venue_kapasitas" class="java.lang.Integer"/>
+	<field name="venue_harga_sewa" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="178" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="130" width="555" height="33" uuid="b5078187-fc39-420a-84d3-16423425ea8e"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Pemesanan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="177" width="554" height="1" uuid="a13ec404-12b1-4ef4-a7e2-71e8d2b650d7"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="82" width="50" height="19" uuid="0927fdfb-934c-4416-9f5a-463feca4d60c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal   :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="69" width="555" height="1" uuid="0d846e44-5f19-42ae-9a04-a084e64a9768"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="71" y="82" width="144" height="19" uuid="c3b8ef73-1a16-4422-a2ab-621999b86d7d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="146" y="10" width="265" height="20" uuid="f53ae34b-af96-40e3-b1e7-1824695578f0"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abbasy Decoration - Event Organizer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="33" width="212" height="17" uuid="8d526d2a-58c0-47a3-b829-73ef72d3ad85"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Mahakam Raya No.70, Jakarta Pusat]]></text>
+			</staticText>
+			<image>
+				<reportElement x="27" y="0" width="60" height="60" uuid="4bf2f17a-cb4c-491d-bbc5-9d2b1a3a47ac"/>
+				<imageExpression><![CDATA["C:\\Users\\Donny Saputra\\OneDrive\\Dokumen\\NetBeansProjects\\Project_event_organizer(3)\\src\\img\\Abbasy.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement x="128" y="1" width="1" height="35" uuid="407f7676-30f3-4162-8c31-d5e2b53b5d3f"/>
+			</line>
+			<line>
+				<reportElement x="334" y="1" width="1" height="35" uuid="3c9a202b-e5b8-4b05-8b82-f51c19522f5d"/>
+			</line>
+			<staticText>
+				<reportElement x="136" y="3" width="92" height="31" uuid="2af48502-27e2-43e7-a647-beb674e57bec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paket Event]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="3" width="43" height="31" uuid="bec9218b-0cb0-4c6d-96d4-380458a0220e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah Tamu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="3" width="87" height="31" uuid="b5659c1d-eb46-4d0a-9023-b79a590e3106"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Venue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="9" width="37" height="20" uuid="be40ba8b-6a8e-4cb0-b129-e08978a919c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="2" width="52" height="32" uuid="3def8eb4-406c-4abb-ab1b-3edd978d5b2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Acara]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="2" width="73" height="32" uuid="44fa9a4a-bc44-4823-8ff7-223a35703a04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Pelanggan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="1" width="1" height="35" uuid="a3e6851e-bc86-4ad5-8633-df1d27165d2b"/>
+			</line>
+			<line>
+				<reportElement x="403" y="1" width="1" height="35" uuid="3ad5e74d-05b2-4cad-acb7-45c65c36af38"/>
+			</line>
+			<line>
+				<reportElement x="554" y="1" width="1" height="35" uuid="0392fda8-a259-43bf-a535-33b82f9c98b2"/>
+			</line>
+			<line>
+				<reportElement x="235" y="1" width="1" height="35" uuid="a84287d5-5a94-4799-935f-176bd63c306f"/>
+			</line>
+			<line>
+				<reportElement x="46" y="1" width="1" height="35" uuid="435ea418-d15e-4e2a-b48f-24c2772421c2"/>
+			</line>
+			<line>
+				<reportElement x="457" y="1" width="1" height="35" uuid="5f7487f1-b54e-4409-b794-8e2ed758fcf6"/>
+			</line>
+			<staticText>
+				<reportElement x="462" y="3" width="85" height="31" uuid="e9f1d113-1666-49af-927a-96d52dc9179d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status 
+Pemesanan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="35" width="554" height="1" uuid="cd3b58f3-e5ad-47bb-b834-920b39263b31"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement x="334" y="1" width="1" height="35" uuid="26d2c6d3-337c-4aa9-8e81-25e39c6b7237"/>
+			</line>
+			<line>
+				<reportElement x="457" y="1" width="1" height="35" uuid="bb8a12ae-a020-46b9-aa03-0f22506d5286"/>
+			</line>
+			<line>
+				<reportElement x="46" y="1" width="1" height="35" uuid="3011a107-11df-4eac-bbf5-09fe8d3ef708"/>
+			</line>
+			<line>
+				<reportElement x="554" y="1" width="1" height="35" uuid="76cdd6e1-364b-4a77-858f-87ce792914db"/>
+			</line>
+			<line>
+				<reportElement x="235" y="1" width="1" height="35" uuid="923a0d50-fe69-49ed-b1f4-dea179d1c8cf"/>
+			</line>
+			<line>
+				<reportElement x="1" y="1" width="1" height="35" uuid="bc18a259-27db-4e44-8983-1ecd2ba094eb"/>
+			</line>
+			<line>
+				<reportElement x="128" y="1" width="1" height="35" uuid="0d12aec6-8fa9-4747-8a66-9386d8f9eb4c"/>
+			</line>
+			<line>
+				<reportElement x="403" y="1" width="1" height="35" uuid="af9316fb-dcd0-4e20-afe4-cb46b8ccd52b"/>
+			</line>
+			<textField>
+				<reportElement x="52" y="2" width="73" height="34" uuid="72c6c78d-c9b9-4de2-9209-e508ec4cb599"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pelanggan_nm_pel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="2" width="92" height="34" uuid="143d5e21-dae3-4ab7-b750-54aeba42ae77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{paket_event_nama_paket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="2" width="87" height="34" uuid="d0becef3-0986-4427-aabc-54e2414fb1df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{venue_nama_venue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="337" y="2" width="64" height="33" uuid="277e03a5-a20a-42af-ab93-2472638f0751"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_event_tanggal_acara}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="9" width="43" height="20" uuid="259bc4ec-9f4e-49a7-9ac0-5367b3cbac57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_event_jumlah_tamu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="9" width="85" height="20" uuid="e7000ce6-78f5-49c8-9820-b0c4d5718e43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_event_status_pemesanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="9" width="37" height="20" uuid="7a99b884-2194-4f3b-9b96-584e9fc24043"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="35" width="554" height="1" uuid="113f33fe-79d8-4c65-92ad-2cbe0aab6d16"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="220" splitType="Stretch">
+			<staticText>
+				<reportElement x="390" y="86" width="110" height="20" uuid="5ef4dd7b-bbb6-471c-b5f8-8bbd1f822747"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Manager Perusahaan,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="411" y="61" width="106" height="20" uuid="9bacbccc-059d-4884-8888-40bed5257ef4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="373" y="61" width="37" height="20" uuid="a2ddf08e-83af-4a8d-8084-5e0950676072"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="151" width="110" height="20" uuid="62fdbb1d-73ac-4aaa-92df-7dd408e0b4b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[(..................................)]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="7" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="11" splitType="Stretch"/>
+	</summary>
+</jasperReport>

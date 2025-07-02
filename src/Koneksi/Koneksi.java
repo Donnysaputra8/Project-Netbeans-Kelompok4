@@ -1,8 +1,8 @@
-
 package Koneksi;
 import java.sql.*;
 public class Koneksi {
 public static Connection Koneksi;
+
 public Connection connect(){
     try{
         Class.forName("com.mysql.jdbc.Driver");
